@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Admin\Invoice;
 
-use App\Models\User;
+use App\Exports\InvoicesExport;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Invoices\StoreInvoiceRequest;
+use App\Http\Traits\FileTrait;
+use App\Http\Traits\GetProducts;
+use App\Http\Traits\RedirectTrait;
 use App\Models\Invoice;
+use App\Models\Invoice_Attachment;
+use App\Models\Invoice_Detail;
 use App\Models\Product;
 use App\Models\Section;
-use Illuminate\Http\Request;
-use App\Http\Traits\FileTrait;
-use App\Models\Invoice_Detail;
-use App\Exports\InvoicesExport;
-use App\Http\Traits\GetProducts;
+use App\Models\User;
 use App\Notifications\NewInvoice;
-use App\Http\Traits\RedirectTrait;
-use App\Models\Invoice_Attachment;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Notification;
-use App\Http\Requests\Invoices\StoreInvoiceRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InvoiceController extends Controller
 {
@@ -82,12 +82,10 @@ class InvoiceController extends Controller
             ]);
         }
 
-
-        $user = User::find(1); 
-        Notification::send($user, new NewInvoice($invoice_id)); 
+        $user = User::find(1);
+        Notification::send($user, new NewInvoice($invoice_id));
 
         return $this->redirect("Invoice Has Been Created Successfully", "admin.invoices.index");
-
 
     }
 
@@ -114,25 +112,22 @@ class InvoiceController extends Controller
             "note" => $request->note,
         ]);
 
-      
-        $invoice_details = Invoice_Detail::where("invoice_id", $invoice->id)->get();
-        foreach ($invoice_details as $detail) {
-            $detail->update([
+        DB::transaction(function () use ($request, $invoice) {
+            $invoice_details = Invoice_Detail::where("invoice_id", $invoice->id);
+            $invoice_attachments = Invoice_Attachment::where("invoice_id", $invoice->id);
+
+            $invoice_details->update([
                 "invoice_number" => $request->invoice_number,
                 "product" => $request->product,
                 "section_id" => $request->section_id,
-                "value_vat" => $request->value_vat,
                 "note" => $request->note,
                 "user" => auth()->user()->name,
             ]);
-        }
 
-        $invoice_attachments = Invoice_Attachment::where("invoice_id", $invoice->id)->get();
-        foreach ($invoice_attachments as $attachment) {
-            $attachment->update([
+            $invoice_attachments->update([
                 "invoice_number" => $request->invoice_number,
             ]);
-        }
+        });
 
         return $this->redirect("Invoice Has Been Updated Successfully", "admin.invoices.index");
     }
@@ -181,5 +176,3 @@ class InvoiceController extends Controller
     }
 
 }
-
-
