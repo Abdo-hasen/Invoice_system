@@ -72,7 +72,7 @@ class InvoiceController extends Controller
 
         if ($request->hasFile("file")) {
             //upload file
-            $file_name = $this->uploadFile(Invoice::PATH . $request->invoice_number, $request->file); //$request->file : file name of input
+            $file_name = $this->uploadFile(Invoice::PATH, $request->file); //$request->file : file name of input
 
             Invoice_Attachment::create([
                 "invoice_id" => $invoice_id,

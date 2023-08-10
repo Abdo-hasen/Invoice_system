@@ -40,6 +40,8 @@ class AdminController extends Controller
             $unpaid_percentage = ($unpaid_count / $count) * 100;
         }
 
+
+
         //=================Charts=====================
 
         $chartjs = app()->chartjs

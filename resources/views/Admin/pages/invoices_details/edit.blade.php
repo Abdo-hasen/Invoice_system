@@ -61,21 +61,21 @@
                                 <div class="col">
                                     <label for="inputName" class="control-label">Invoice Number</label>
                                     <input type="text" class="form-control" name="invoice_number" id="inputName"
-                                        placeholder="Enter Invoice Number"
-                                        value="{{ $invoice->invoice_number }}" required readonly>
+                                        placeholder="Enter Invoice Number" value="{{ $invoice->invoice_number }}" required
+                                        readonly>
                                 </div>
 
                                 <div class="col">
                                     <label>Invoice Date</label>
                                     <input class="form-control fc-datepicker" name="invoice_date" placeholder="YYYY-MM-DD"
-                                        type="text" value="{{ date('Y-m-d') }}"
-                                        value="{{  $invoice->invoice_date }}" required readonly>
+                                        type="text" value="{{ date('Y-m-d') }}" value="{{ $invoice->invoice_date }}"
+                                        required readonly>
                                 </div>
 
                                 <div class="col">
                                     <label>Due Date</label>
                                     <input class="form-control fc-datepicker" name="due_date" placeholder="YYYY-MM-DD"
-                                        type="text" value="{{  $invoice->due_date }}" required readonly>
+                                        type="text" value="{{ $invoice->due_date }}" required readonly>
                                 </div>
 
                             </div>
@@ -85,13 +85,14 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="inputName" class="control-label">Section</label>
-                                    <select name="section_id" class="form-control SlectBox" onclick="console.log($(this).val())"
-                                        onchange="console.log('change is firing')" readonly>
+                                    <select name="section_id" class="form-control SlectBox"
+                                        onclick="console.log($(this).val())" onchange="console.log('change is firing')"
+                                        readonly>
                                         <!--placeholder-->
-                                        <option value=" {{ $invoice->section_id}}">
+                                        <option value=" {{ $invoice->section_id }}">
                                             {{ $invoice->section->name }}
                                         </option>
-    
+
                                     </select>
                                 </div>
 
@@ -99,7 +100,7 @@
                                 <div class="col">
                                     <label>Product</label>
                                     <select class="form-control" name="product" readonly>
-                                        <option value="{{  $invoice->product }}">{{ $invoice->product }}
+                                        <option value="{{ $invoice->product }}">{{ $invoice->product }}
                                         </option>
                                     </select>
                                 </div>
@@ -109,8 +110,7 @@
                                 <div class="col">
                                     <label for="inputName" class="control-label">Amount Collection</label>
                                     <input type="text" class="form-control" name="amount_collection"
-                                        value="{{  $invoice->amount_collection }}" readonly
-                                        id="Amount_Commission"
+                                        value="{{ $invoice->amount_collection }}" readonly id="Amount_Commission"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                 </div>
                             </div>
@@ -123,8 +123,7 @@
                                 <div class="col">
                                     <label for="inputName" class="control-label">Amount Commission</label>
                                     <input type="text" class="form-control form-control-lg" name="amount_commission"
-                                        value="{{  $invoice->amount_commission }}"
-                                        title="Enter Amount Commission"
+                                        value="{{ $invoice->amount_commission }}" title="Enter Amount Commission"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                         required readonly>
                                 </div>
@@ -132,15 +131,15 @@
                                 <div class="col">
                                     <label for="inputName" class="control-label">Discount</label>
                                     <input type="text" class="form-control form-control-lg" name="discount"
-                                        title="Enter The Discount" id="Discount"
-                                        value="{{  $invoice->discount }}"
+                                        title="Enter The Discount" id="Discount" value="{{ $invoice->discount }}"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                         value=0 required readonly>
                                 </div>
 
                                 <div class="col">
                                     <label for="inputName" class="control-label">Rate Vat</label>
-                                    <select name="rate_vat" id="Rate_VAT" class="form-control" onchange="myFunction()" readonly>
+                                    <select name="rate_vat" id="Rate_VAT" class="form-control" onchange="myFunction()"
+                                        readonly>
                                         <!--placeholder-->
                                         <option value="{{ $invoice->rate_vat }}">
                                             {{ $invoice->rate_vat }}</option>
@@ -154,15 +153,14 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="inputName" class="control-label">Value VAT</label>
-                                    <input type="text" class="form-control"
-                                        value="{{ $invoice->value_vat }}" name="value_vat"
-                                        id="Value_VAT" readonly>
+                                    <input type="text" class="form-control" value="{{ $invoice->value_vat }}"
+                                        name="value_vat" id="Value_VAT" readonly>
                                 </div>
 
                                 <div class="col">
                                     <label for="inputName" class="control-label">Total</label>
                                     <input type="text" class="form-control" name="total"
-                                        value="{{  $invoice->total }}" id="Total" readonly>
+                                        value="{{ $invoice->total }}" id="total" readonly>
                                 </div>
                             </div>
 
@@ -174,7 +172,7 @@
                                 </div>
                             </div><br>
 
-                        
+
 
                             <div class="row">
                                 <div class="col">
@@ -189,10 +187,22 @@
                                 <div class="col">
                                     <label>Payment Date </label>
                                     <input class="form-control fc-datepicker" name="payment_date"
-                                        placeholder="YYYY-MM-DD" type="text" required value="{{ date("Y-m-d") }}">
+                                        placeholder="YYYY-MM-DD" type="text" required value="{{ date('Y-m-d') }}">
                                 </div>
+                            </div><br>
 
 
+                            <div class="row">
+                                <div class="col">
+                                    <label>Partial Payment Amount</label>
+                                    <input class="form-control" name="partial_payment_amount" type="number"
+                                        id="partialPaymentAmount" >
+                                </div>
+                                <div class="col">
+                                    <label>Remaining Balance</label>
+                                    <input class="form-control" name="remaining_balance" type="number"
+                                        id="remainingBalance" readonly>
+                                </div>
                             </div><br>
 
                             <div class="d-flex justify-content-center">

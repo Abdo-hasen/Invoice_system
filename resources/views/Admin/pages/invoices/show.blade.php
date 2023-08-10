@@ -147,6 +147,8 @@
                                                                             <th> Product</th>
                                                                             <th>Section</th>
                                                                             <th> Status</th>
+                                                                            <th>partial_payment_amount</th>
+                                                                            <th>remaining_balance</th>
                                                                             <th> Payment Date </th>
                                                                             <th>Notes</th>
                                                                             <th> Created at </th>
@@ -174,6 +176,8 @@
                                                                                             class="badge badge-pill badge-warning">{{ $detail->status }}</span>
                                                                                     </td>
                                                                                 @endif
+                                                                                <td>{{ $detail->partial_payment_amount }}</td>
+                                                                                <td>{{ $detail->remaining_balance }}</td>
                                                                                 <td>{{ $detail->payment_date }}</td>
                                                                                 <td>{{ $detail->note }}</td>
                                                                                 <td>{{ $detail->created_at }}</td>

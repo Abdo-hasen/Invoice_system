@@ -34,12 +34,12 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('AdminAssets/dist/js/pages/dashboard.js') }}"></script>
 
-<script>
+{{-- <script>
     setInterval(function() {
         $("#notifications_count").load(window.location.href + " #notifications_count");
         $("#unreadNotifications").load(window.location.href + " #unreadNotifications");
     }, 5000); //5 seconds will relpad and send request
-</script>
+</script> --}}
 
 
 @include('sweetalert::alert')

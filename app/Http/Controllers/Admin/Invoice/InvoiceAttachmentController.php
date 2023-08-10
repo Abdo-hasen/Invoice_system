@@ -18,7 +18,7 @@ class InvoiceAttachmentController extends Controller
        
     public function store(StoreInvoiceDetailRequest $request)
     {
-        $file_name = $this->uploadFile(Invoice::PATH . $request->invoice_number, $request->file);
+        $file_name = $this->uploadFile(Invoice::PATH, $request->file);
 
         Invoice_Attachment::create([
                 "invoice_id" => $request->invoice_id,
@@ -34,13 +34,13 @@ class InvoiceAttachmentController extends Controller
 
     public function openFile(Invoice_Attachment $attachment)
     {
-        $file = Storage::disk('public_uploads')->path($attachment->invoice_number.'/'.$attachment->file_name); // to get path of file
+        $file = Storage::disk('public_uploads')->path($attachment->file_name); // to get path of file
         return response()->file($file); 
     }
 
     public function downloadFile(Invoice_Attachment $attachment)
     {
-        $file = Storage::disk('public_uploads')->path($attachment->invoice_number.'/'.$attachment->file_name); 
+        $file = Storage::disk('public_uploads')->path($attachment->file_name); 
         return response()->download($file);
     }
 

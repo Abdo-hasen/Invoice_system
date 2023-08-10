@@ -47,6 +47,8 @@ class InvoiceDetailController extends Controller
                 "status" => $request->payment_status ,
                 "value_status" =>  3,
                 "payment_date" => $request->payment_date ,
+                "partial_payment_amount" => $request->partial_payment_amount,
+                "remaining_balance" => $request->remaining_balance
             ]);
 
             Invoice_Detail::create([
@@ -57,6 +59,8 @@ class InvoiceDetailController extends Controller
                 "value_vat" => $request->value_vat,
                 "status" => $request->payment_status ,
                 "value_status" =>  3,
+                "partial_payment_amount" => $request->partial_payment_amount,
+                "remaining_balance" => $request->remaining_balance,
                 "payment_date" => $request->payment_date ,
                 "note" => $request->note,
                 "user" => auth()->user()->name, 

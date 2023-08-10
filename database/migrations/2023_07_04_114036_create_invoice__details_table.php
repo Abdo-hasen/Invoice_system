@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string("section_id");
             $table->string("status")->default("un paid");//paid - non paid
             $table->enum("value_status",[1,2,3])->default(2); //1 for paid - 2 un paid - 3 partita paid
+            $table->decimal("partial_payment_amount")->nullable();
+            $table->decimal("remaining_balance")->nullable();
             $table->text("note")->nullable();
             $table->date("payment_date")->nullable();
             $table->string("user");

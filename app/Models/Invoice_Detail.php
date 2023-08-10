@@ -18,7 +18,9 @@ class Invoice_Detail extends Model
         "note",
         "user",
         "invoice_id",
-        "payment_date"
+        "payment_date",
+        "partial_payment_amount",
+        "remaining_balance"
     ];
 
     public function invoice()
