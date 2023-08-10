@@ -13,6 +13,6 @@ we use in this system multi authentication and
 permission and we have statics for invoices and you 
 can print or excel or archive invoices and you can 
 search by date or number or product and we use 
-email and real time notification in add invoice and we 
+email and  notification in add invoice and we 
 use ajax
 
