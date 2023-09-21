@@ -10,9 +10,14 @@
 ## About Project
 
 we use in this system multi authentication and 
-permission and we have statics for invoices and you 
+permission using spatie and we have statics for invoices and you 
 can print or excel or archive invoices and you can 
 search by date or number or product and we use 
 email and  notification in add invoice and we 
-use ajax
+use ajax 
+- note :
+if you need to run this project , you need to seed :
+PermissionTableSeeder
+then : CreateOwnerUserSeeder (here u have password and email)
+
 
