@@ -1,20 +1,14 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
 ## About Project
 
-we use in this system multi authentication and 
-permission using spatie and we have statics for invoices and you 
-can print or excel or archive invoices and you can 
-search by date or number or product and we use 
-email and  notification in add invoice and we 
-use ajax 
+
+- Implemented a multi-level authentication and permission system for enhanced security and user role management Using spatie
+- Developed an invoicing module with statistical analysis features, enabling users to print, export to Excel, and archive invoices efficiently.
+- Designed a robust search function allowing users to retrieve invoices by date, number, or product, improving data accessibility.
+- Integrated email and notification systems to facilitate real-time updates during invoice creation.
+- Utilized AJAX technology to ensure a responsive and seamless user interface, enhancing user experience and efficiency.
+
 - note :
 if you need to run this project , you need to seed :
 PermissionTableSeeder
