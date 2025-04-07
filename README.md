@@ -84,6 +84,4 @@ php artisan serve
 
 This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Security
 
-If you discover any security vulnerabilities, please email [taylor@laravel.com](mailto:taylor@laravel.com).
